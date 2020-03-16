@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,badd,bsub,bmul,bdiv,bdot,bequal;
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,badd,bsub,bmul,bdiv,bdot,bequal,reset;
     TextView ans;
     double var1,var2;
     boolean add,sub,mul,div;
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         bmul= (Button) findViewById(R.id.btnmul);
         bdiv= (Button) findViewById(R.id.btndiv);
         bdot= (Button) findViewById(R.id.btndot);
-        bequal = (Button) findViewById(R.id.btnequal) ;
+        bequal = (Button) findViewById(R.id.btnequal);
+        reset= (Button) findViewById(R.id.reset);
+        ;
 
         ans = (TextView) findViewById(R.id.Answer);
 
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ans.setText(ans.getText()+"1");
+                ans.setText(ans.getText()+"9");
             }
         });
         bdot.setOnClickListener(new View.OnClickListener() {
@@ -155,5 +157,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+reset.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        ans.setText("");
+
+    }
+});
     }
 }

@@ -150,13 +150,7 @@
             android:text="."
             android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/btnequal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="?attr/colorControlHighlight"
-            android:text="="
-            android:textSize="30sp" />
+
 
         <Button
             android:id="@+id/btndiv"
@@ -165,6 +159,27 @@
             android:background="?attr/colorControlHighlight"
             android:text="/"
             android:textSize="30sp" />
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/colorControlHighlight"
+            android:text="c"
+            android:textSize="30sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="00dp">
+        <Button
+            android:id="@+id/btnequal"
+            android:layout_width="match_parent"
+            android:layout_marginRight="25dp"
+            android:layout_height="63dp"
+            android:background="?attr/colorControlHighlight"
+            android:text="="
+            android:textSize="30sp" />
+
     </LinearLayout>
 
 
