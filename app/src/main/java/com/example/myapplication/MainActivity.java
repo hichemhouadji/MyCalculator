@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,badd,bsub,bmul,bdiv,bdot,bequal,reset;
+    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0,b00,remainder,badd,bsub,bmul,bdiv,bdot,back,bequal,reset;
     TextView ans;
     double var1,var2;
-    boolean add,sub,mul,div;
+    boolean add,sub,mul,div,mremainder,decimal;
+    String processor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,17 +27,33 @@ public class MainActivity extends AppCompatActivity {
         b8= (Button) findViewById(R.id.btn8);
         b9= (Button) findViewById(R.id.btn9);
         b0= (Button) findViewById(R.id.btn0);
+        b00= (Button) findViewById(R.id.btn00);
         badd= (Button) findViewById(R.id.btnadd);
         bsub= (Button) findViewById(R.id.btnsub);
         bmul= (Button) findViewById(R.id.btnmul);
         bdiv= (Button) findViewById(R.id.btndiv);
         bdot= (Button) findViewById(R.id.btndot);
+        remainder= (Button) findViewById(R.id.percent) ;
         bequal = (Button) findViewById(R.id.btnequal);
         reset= (Button) findViewById(R.id.reset);
+        back= (Button) findViewById(R.id.back);
+
         ;
 
         ans = (TextView) findViewById(R.id.Answer);
+        b0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"0");
+            }
+        });
+        b00.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans.setText(ans.getText()+"00");
 
+            }
+        });
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,11 +114,33 @@ public class MainActivity extends AppCompatActivity {
                 ans.setText(ans.getText()+".");
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 processor = ans.getText().toString();
+                if (processor.length()>0) {
+                    processor = processor.substring(0, processor.length() - 1);
+                    ans.setText(processor);
+                }
+            }
+        });
+        remainder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ans.getText().length() != 0) {
+                    var1 = Float.parseFloat(ans.getText() + "");
+                    mremainder = true;
+                    decimal = false;
+                    ans.setText(null);
+                }
+            }
+        });
         badd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 var1=Double.parseDouble(ans.getText()+"");
                 add=true;
+                decimal = false;
                 ans.setText(null);
 
             }
@@ -111,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 var1=Double.parseDouble(ans.getText()+"");
                 sub=true;
+                decimal = false;
+
                 ans.setText(null);
             }
         });
@@ -119,6 +160,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 var1=Double.parseDouble(ans.getText()+"");
                 mul=true;
+                decimal = false;
+
                 ans.setText(null);
             }
         });
@@ -127,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 var1=Double.parseDouble(ans.getText()+"");
                 div=true;
+                decimal = false;
                 ans.setText(null);
             }
         });
@@ -146,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if(mul==true)
                 {
-                    ans.setText(var1+var2+"");
+                    ans.setText(var1*var2+"");
                     mul=false;
                 }
                 if(div==true)
@@ -154,6 +198,9 @@ public class MainActivity extends AppCompatActivity {
                     ans.setText(var1/var2+"");
                     div=false;
                 }
+                if (mremainder==true) {
+                    ans.setText(var1 % var2 + "");
+                    mremainder = false;}
             }
         });
 

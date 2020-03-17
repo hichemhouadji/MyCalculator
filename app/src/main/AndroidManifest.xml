@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:label="MyCalculator"
+        android:label="hichem"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
